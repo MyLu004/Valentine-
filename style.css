@@ -1,25 +1,43 @@
-@import url('https://fonts.googleapis.com/css2?family=Protest+Strike&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Protest+Strike&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dekko&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap');
 
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    /* font-style: normal; */
+    font-family: 'Gamja Flower', sans-serif;
+    font-weight: 700;
 }
 
 body{
     background-color: #F4C3C2;
-    font-family: "Protest Strike", sans-serif;
-    font-weight: 400;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    align-items: center;
+    
+}
+
+.body-container{
+    /* background-color: red; */
+    position: relative;
+    display: flex;
+    gap:1em;
+    /* background-color: beige; */
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    width: 900px;
+    height: 900px;
+    margin:30px;
 }
 
 .container{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
+    padding: 2em;
 
-    background-color: #F4C3C2;
+    /* background-color: aqua; */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -28,22 +46,80 @@ body{
 }
 
 .container h1{
-    font-size: 2rem;
+    font-size: 3em;
     color: #F6F2FF;
+    margin-bottom: 10px;
+    /* background-color: yellow; */
+    text-align: center;
+}
+
+.container h1.active{
+    display: none;
+}
+
+.pic img{
+    width: 300px;
+    height: 300px;
+    border-radius: 2rem;
 }
 
 .btn-container{
+
     display: flex;
     gap:1em;
+    /* background-color: beige; */
+    justify-content: center;
+    margin-top: 15px;
 }
 
 .btn-container button{
+    position: absolute;
+    width: 120px;
+    height: inherit;
     outline: none;
     border: none;
-    background-color: aquamarine;
-    border-radius: .5em;
-    width: 50px;
-    padding: 10px;
-    font-size: 1rem;
+    border-radius: 2em;
+    padding: 1em;
     cursor: pointer;
+    font-family: 'Dekko', cursive;
+    font-weight: 400;
+    font-size: 1rem;
+}
+
+.yes-btn{
+    text-align: center;
+    margin-left: -150px;
+    background-color: #FF8FAB;
+    color:#F6F2FF;
+    scale:1;
+    animation: tilt-shaking 1s infinite;
+    box-shadow: #FB6F92 5px 5px;
+}
+@keyframes tilt-shaking{
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(5deg); }
+    50% { transform: rotate(0eg); }
+    75% { transform: rotate(-5deg); }
+    100% { transform: rotate(0deg); }
+
+}
+
+
+.yes-btn.active{
+    margin-left: 0;
+    scale: 1;
+    width: 25rem;
+}
+
+.no-btn{
+    text-align: center;
+
+    margin-right: -150px;
+    background-color: #F6F2FF;
+    box-shadow: #b6b4bb 5px 5px;
+    color:#FB6F92 ;
+}
+
+.no-btn.active{
+    display: none;
 }
