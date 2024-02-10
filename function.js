@@ -4,6 +4,9 @@ const yesBtn = document.querySelector('.yes-btn')
 const imgElemet = document.querySelector('.imagecontainer');
 const bodyContainer = document.querySelector('.body-container')
 const myh1 = document.querySelector('.container h1')
+const answerYes = document.querySelector('.answer-yes')
+const myAudio = document.querySelector('.audio-container audio')
+const soundno_audio = new Audio('./audio/bananacatcrying.mp3');
 
 const bodyReact =  bodyContainer.getBoundingClientRect();
 const noBtnReact = noBtn.getBoundingClientRect();
@@ -65,6 +68,33 @@ function increaseYesBtn(scale){
     yesBtn.style.scale = scale;
 }
 
+function noSoundBtn(){
+    const volume = 0.9;
+    
+    soundno_audio.volume = volume;
+    console.log("playing song")
+    soundno_audio.play();
+    // pauseSong(myAudio);
+    myAudio.volume = 0.1;
+
+}
+
+function yesSoundBtn(){
+    const volume = 0.5;
+    const soundyes_audio = new Audio('./audio/happyhappycat.mp3');
+    soundyes_audio.volume = volume;
+    console.log("playing song")
+    soundyes_audio.loop = true;
+    soundyes_audio.play();
+    pauseSong(myAudio);
+    pauseSong(soundno_audio)
+}
+
+function pauseSong(mySong){
+    mySong.pause();
+}
+
+
 
 noBtn.addEventListener('click',()=>{
     i = i < (imageListSadCat.length)-1 ? i + 1 : 0;
@@ -75,13 +105,19 @@ noBtn.addEventListener('click',()=>{
     changSadPrompt(i);
     randomlyNoBtn();
     increaseYesBtn(scale);
+    noSoundBtn();
     
 })
 
 yesBtn.addEventListener('click',()=>{
     yesBtn.style.scale = 1;
+
     yesBtn.classList.toggle('active')
-    yesBtn.innerHTML = `LUV YOU, my pooike wookie smookie smocchie oochie 
+    answerYes.classList.toggle('active')
+    noBtn.classList.toggle('active')
+    myh1.classList.toggle('active')
+
+    answerYes.innerHTML = `LUV YOU, my pooike wookie smookie smocchie oochie 
                         soopie wompie domie sweety pie cutie pie eepy weepy 
                         baby way babybug lovebug butter cup angle face with cherry
                         on top shuggy shug angel doll hunny bunch honey sweet cheeks
@@ -91,8 +127,8 @@ yesBtn.addEventListener('click',()=>{
                         shining armor boo thang carino sweetheart baby love bug good looking
                         sunshine darling amor mi corazon sweet thing sweet stuff bear bunny 
                         puffin wuffin peanut jellybean sweet cheek cupcake honey pothot pot`
-    noBtn.classList.toggle('active')
-    myh1.classList.toggle('active')
+    
     imgElemet.src = "./image/cat-cute.gif"
+    yesSoundBtn();
 })
 
